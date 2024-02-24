@@ -1,0 +1,6 @@
+name: SoupFFA
+version: '${project.version}'
+main: dev.zanex.soupffa.Main
+softdepend: [fastboard]
+authors: [zanexGHG, MoritzMCC]
+description: A cool ffa plugin based on the soup gamemode.
