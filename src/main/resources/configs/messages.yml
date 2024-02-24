@@ -1,0 +1,39 @@
+ServerMessages:
+  EnableMessage: "&9&lSoupFFA &a&l➜ &fhas been enabled!",
+  DisableMessage: "&9&lSoupFFA &c&l➜ &fhas been disabled!"
+
+CommandMessages:
+  # -- If you want a prefix before every success, error or warning message then you can use this: --  #
+  Prefixes:
+    Success: "&a> &7",
+    Error: "&c> &7",
+    Warning: "&e! &7",
+
+  # -- This is used for the default messages that basically every command needs. (These messages also use prefixes.) -- #
+  DefaultMessages:
+    NoPermission: "You don't have permission to do this!",
+    NoConsoleExec: "You have to be a player to execute this command",
+    NoPlayerFound: "This player was not found!",
+    Usage: "Usage: &b{usage}",
+
+  GamemodeCommand:
+    # -- Change the messages when changing your own gamemode. -- #
+    Self:
+      SURVIVAL: "Your gamemode has been updated to &aSURVIVAL&7.",
+      CREATIVE: "Your gamemode has been updated to &aCREATIVE&7.",
+      ADVENTURE: "Your gamemode has been updated to &aADVENTURE&7.",
+      SPECTATOR: "Your gamemode has been updated to &aSPECTATOR&7.",
+
+    # -- Change the messages when changing the gamemode of others. -- #
+    Other:
+      Target:
+        SURVIVAL: "Your gamemode has been updated to &aSURVIVAL &7by {executor}.",
+        CREATIVE: "Your gamemode has been updated to &aCREATIVE &7by {executor}.",
+        ADVENTURE: "Your gamemode has been updated to &aADVENTURE &7by {executor}.",
+        SPECTATOR: "Your gamemode has been updated to &aSPECTATOR &7by {executor}.",
+      Executor:
+        SURVIVAL: "The gamemode of {target} has been updated to &aSURVIVAL&7.",
+        CREATIVE: "The gamemode of {target} has been updated to &aCREATIVE&7.",
+        ADVENTURE: "The gamemode of {target} has been updated to &aADVENTURE&7.",
+        SPECTATOR: "The gamemode of {target} has been updated to &aSPECTATOR&7.",
+
