@@ -47,18 +47,4 @@ public class Config {
         }
 
     }
-
-    public void add(String name, ) {
-        if (!config.contains(name)) {
-            config.set(String.format("%s.Damage", name), damage);
-            config.set(String.format("%s.Chatcolor", name), chatcolor);
-            config.set(String.format("%s.Location", name), location);
-            config.set(String.format("%s.Tickspeed", name), tickspeed);
-
-        }
-        save();
-    }
-
-
-
 }

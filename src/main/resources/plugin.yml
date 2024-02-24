@@ -4,3 +4,14 @@ main: dev.zanex.soupffa.Main
 softdepend: [fastboard]
 authors: [zanexGHG, MoritzMCC]
 description: A cool ffa plugin based on the soup gamemode.
+commands:
+  soupffa:
+    description: Show information about the plugin.
+  gamemode:
+    description: Change your own or other people's gamemode.
+    permission: soupffa.commands.gamemode
+    aliases: [gm]
+  build:
+    description: Enable or disable the build mode.
+    permission: soupffa.commands.build
+    aliases: [edit]
