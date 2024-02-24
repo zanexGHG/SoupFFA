@@ -12,15 +12,15 @@ public class Config {
     private final File file;
     private final YamlConfiguration config;
 
-    public Config() {
+    public Config(String configName) {
 
-        File dir = new File("./plugins/craftattack/config");
+        File dir = new File("./plugins/soupffa");
 
         if (!dir.exists()){
             dir.mkdir();
         }
 
-        this.file = new File(dir,"config.yml");
+        this.file = new File(dir, configName + ".yml");
 
         if (!file.exists()){
             try {
@@ -47,4 +47,19 @@ public class Config {
         }
 
     }
+
+    public void add(String dataGroupName, String dataType, String DataString ) {
+        if (!config.contains(dataGroupName)) {
+            config.set(String.format("%s."+ dataType, dataGroupName), DataString);
+        }
+        save();
+    }
+
+    public String getData(String dataGroupName, String dataType){
+        String outPut = config.getString(String.format("%s."+dataType, dataGroupName));
+        return outPut;
+    }
+
+
+
 }
