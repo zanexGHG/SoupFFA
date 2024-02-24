@@ -13,7 +13,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
+        
     }
 
     @Override
