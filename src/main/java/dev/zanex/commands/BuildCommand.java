@@ -28,7 +28,7 @@ public class BuildCommand implements CommandExecutor {
 
         if (args.length ==1){
             try{
-                Bukkit.getPlayer(args[1]);
+               Player player1 =  Bukkit.getPlayer(args[1]);
 
             }catch ()
         }
