@@ -14,7 +14,7 @@ public class Config {
 
     public Config(String configName) {
 
-        File dir = new File("./plugins/soupffa");
+        File dir = new File("./plugins/SoupFFA");
 
         if (!dir.exists()){
             dir.mkdir();

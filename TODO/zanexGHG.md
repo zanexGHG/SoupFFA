@@ -8,3 +8,4 @@
 - Unbreakable armor (config option)
 - JoinQuitListener
 - ScoreboardManager
+- kits (after kit interface, kit system and structure)
