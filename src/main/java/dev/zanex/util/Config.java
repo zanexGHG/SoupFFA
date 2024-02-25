@@ -59,7 +59,4 @@ public class Config {
         String outPut = config.getString(String.format("%s."+dataType, dataGroupName));
         return outPut;
     }
-
-
-
 }
