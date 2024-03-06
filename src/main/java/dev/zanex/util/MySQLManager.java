@@ -20,15 +20,6 @@ public class MySQLManager {
         }
     }
 
-    public void disconnect(Connection connection) {
-        try {
-            connection.close();
-            Bukkit.getLogger().info("{message.mysql.connection.closed}");
-        } catch (SQLException e) {
-            Bukkit.getLogger().severe("{message.mysql.connection.close.failed}" + e.getMessage());
-        }
-    }
-
     public void createDefaultTables(Connection connection) {
         try {
             connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS `players` (`uuid` VARCHAR(36) PRIMARY KEY, `name` VARCHAR(16), `kills` INT, `deaths` INT)");

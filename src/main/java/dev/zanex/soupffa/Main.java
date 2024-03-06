@@ -28,7 +28,7 @@ public final class Main extends JavaPlugin {
         /* -- Create configs -- */
 
         /* -- Connect to MySQL database -- */
-        connection = mySQLManager.connect("localhost", "3306", "SoupFFA", "SoupFFA", "asdfa978w3liu3vaflksf");
+        connection = mySQLManager.connect("localhost", "3306", "SoupFFA", "admin", "admin");
 
         if(connection != null) {
             mySQLManager.createDefaultTables(connection);
@@ -51,9 +51,6 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         /* -- Disabled warning -- */
         getLogger().severe("§cSoupFFA has been disabled");
-
-        /* -- Disconnect from MySQL database -- */
-        mySQLManager.disconnect(connection);
     }
 
     public static Plugin getInstance() {

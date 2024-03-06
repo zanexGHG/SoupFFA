@@ -1,6 +1,6 @@
 # zanexGHG - Todo list #
 
-- MySQL connection
+- MySQL connection - fast done brauche nur noch n paar checks und die cfg
 - messages config
 - Information
 - SoupFFA command
