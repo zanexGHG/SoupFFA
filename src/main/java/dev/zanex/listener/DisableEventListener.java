@@ -16,26 +16,28 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 public class DisableEventListener implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
-        event.setCancelled(BuildCommand.buildMode);
+        if(BuildCommand.isInBuildMOde(event.getPlayer()))return;
+        event.setCancelled(true);
     }
 
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
-        event.setCancelled(BuildCommand.buildMode);
+        if(BuildCommand.isInBuildMOde(event.getPlayer())) return;
+        event.setCancelled(true);
     }
 
     @EventHandler
     public void onAchiev(PlayerAchievementAwardedEvent event) {
-        event.setCancelled(BuildCommand.buildMode);
+        event.setCancelled(BuildCommand.isInBuildMOde(event.getPlayer()));
     }
 
     @EventHandler
     public void onWeatherChange(WeatherChangeEvent event) {
-        event.setCancelled(BuildCommand.buildMode);
+        event.setCancelled(BuildCommand.getPlayersInBuildMode().isEmpty());
     }
 
     @EventHandler
     public void onSpawn(EntitySpawnEvent event) {
-        event.setCancelled(BuildCommand.buildMode);
+        event.setCancelled(BuildCommand.getPlayersInBuildMode().isEmpty());
     }
 }

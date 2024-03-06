@@ -8,41 +8,56 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class BuildCommand implements CommandExecutor {
-    public static boolean buildMode = false;
-    public List<Player> playersInBuildMode = new ArrayList<>();
+
+    public static List<UUID> playersInBuildMode = new ArrayList<>();
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(!(sender instanceof Player)){
-            sender.sendMessage("you have to be a Player to execute this command");
+        if (!sender.hasPermission("soupffa.commands.build"))return false;
+
+        Player player = null;
+        if (!(sender instanceof Player)){
+            if (args.length != 1) {
+                sender.sendMessage("you have to define a player you want to put in build mode");
+            }
+            player = getPlayerbyName(args[0]);
+        }
+
+        if (args.length > 1){
+            sender.sendMessage("Please use /build or /build name");
             return false;
         }
 
-        Player player = (Player) sender;
+        if (args.length == 1) player = getPlayerbyName(args[0]);
+        else player = (Player) sender;
 
-        if (!player.hasPermission("SoupFFa.command.build")){
-           player.sendMessage("You don't have the permissions to execute this command");
-           return false;
-        }
 
-        if (args.length == 1 && Bukkit.getServer().getOnlinePlayers().contains(args[0])){
-
+        if (playersInBuildMode.contains(player.getUniqueId())) {
+            playersInBuildMode.remove(player.getUniqueId());
+            sender.sendMessage("§cBuild mode disabled");
         } else {
-            player.sendMessage("§c§l! §7This player is not online or does not exist.");
+            playersInBuildMode.add(player.getUniqueId());
+            sender.sendMessage("§aBuild mode enabled");
+
         }
 
-
-          return true;
+        return true;
     }
 
-    private void activateBuildMode(Player player){
-
+    private Player getPlayerbyName(String name){
+        return Bukkit.getPlayer(name);
     }
 
-    public List<Player> getPlayersInBuildMode() {
+    public static List<UUID> getPlayersInBuildMode() {
         return playersInBuildMode;
+    }
+
+    public static boolean isInBuildMOde(Player player){
+        return getPlayersInBuildMode().contains(player);
     }
 }
