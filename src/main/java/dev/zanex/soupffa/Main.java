@@ -1,5 +1,6 @@
 package dev.zanex.soupffa;
 
+import dev.zanex.commands.FlyCommand;
 import dev.zanex.commands.GamemodeCommand;
 import dev.zanex.commands.SoupFFACommand;
 import dev.zanex.listener.JoinQuitListener;
@@ -40,6 +41,7 @@ public final class Main extends JavaPlugin {
         /* -- Register commands -- */
         getCommand("soupffa").setExecutor(new SoupFFACommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
+        getCommand("fly").setExecutor(new FlyCommand());
 
         /* -- Register listener -- */
         pluginManager.registerEvents(new JoinQuitListener(), this);

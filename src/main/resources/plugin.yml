@@ -15,3 +15,7 @@ commands:
     description: Enable or disable the build mode.
     permission: soupffa.commands.build
     aliases: [edit]
+  fly:
+    description: Toggle your's or other player's fly mode.
+    permission: soupffa.commands.fly
+    aliases: [flight]

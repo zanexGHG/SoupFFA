@@ -33,6 +33,11 @@ public class GamemodeCommand implements CommandExecutor {
                 case "0":
                 case "s":
                 case "survival":
+                    if(player.getGameMode() == GameMode.SURVIVAL) {
+                        player.sendMessage("§c§l! §7You are already in §aSURVIVAL§7.");
+                        return true;
+                    }
+
                     player.setGameMode(GameMode.SURVIVAL);
                     player.sendMessage("§a§l> §7Your gamemode has been updated to §aSURVIVAL§7.");
                     break;
@@ -40,6 +45,11 @@ public class GamemodeCommand implements CommandExecutor {
                 case "1":
                 case "c":
                 case "creative":
+                    if(player.getGameMode() == GameMode.CREATIVE) {
+                        player.sendMessage("§c§l! §7You are already in §aCREATIVE§7.");
+                        return true;
+                    }
+
                     player.setGameMode(GameMode.CREATIVE);
                     player.sendMessage("§a§l> §7Your gamemode has been updated to §aCREATIVE§7.");
                     break;
@@ -47,6 +57,11 @@ public class GamemodeCommand implements CommandExecutor {
                 case "2":
                 case "a":
                 case "adventure":
+                    if(player.getGameMode() == GameMode.ADVENTURE) {
+                        player.sendMessage("§c§l! §7You are already in §aADVENTURE§7.");
+                        return true;
+                    }
+
                     player.setGameMode(GameMode.ADVENTURE);
                     player.sendMessage("§a§l> §7Your gamemode has been updated to §aADVENTURE§7.");
                     break;
@@ -54,6 +69,11 @@ public class GamemodeCommand implements CommandExecutor {
                 case "3":
                 case "sp":
                 case "spectator":
+                    if(player.getGameMode() == GameMode.SPECTATOR) {
+                        player.sendMessage("§c§l! §7You are already in §aSPECTATOR§7.");
+                        return true;
+                    }
+
                     player.setGameMode(GameMode.SPECTATOR);
                     player.sendMessage("§a§l> §7Your gamemode has been updated to §aSPECTATOR§7.");
                     break;
