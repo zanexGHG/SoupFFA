@@ -1,11 +1,16 @@
 package dev.zanex.soupffa;
 
+import dev.zanex.commands.BuildCommand;
 import dev.zanex.commands.FlyCommand;
 import dev.zanex.commands.GamemodeCommand;
 import dev.zanex.commands.SoupFFACommand;
+import dev.zanex.listener.DisableEventListener;
 import dev.zanex.listener.JoinQuitListener;
 import dev.zanex.listener.SoupHealingListener;
+import dev.zanex.util.Config;
+import dev.zanex.util.ConfigManager;
 import dev.zanex.util.MySQLManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,17 +47,23 @@ public final class Main extends JavaPlugin {
         getCommand("soupffa").setExecutor(new SoupFFACommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("build").setExecutor(new BuildCommand());
 
         /* -- Register listener -- */
         pluginManager.registerEvents(new JoinQuitListener(), this);
         pluginManager.registerEvents(new SoupHealingListener(), this);
-        pluginManager.registerEvents(new SoupHealingListener(), this);
+        pluginManager.registerEvents(new DisableEventListener(), this);
+
+        Config testConfig = ConfigManager.createConfig("TestConfig");
+        testConfig.add("test1", "playerName", "MoritzMCC");
+
     }
 
     @Override
     public void onDisable() {
         /* -- Disabled warning -- */
         getLogger().severe("§cSoupFFA has been disabled");
+
     }
 
     public static Plugin getInstance() {

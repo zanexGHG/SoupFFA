@@ -49,14 +49,14 @@ public class Config {
     }
 
     public void add(String dataGroupName, String dataType, String DataString ) {
-        if (!config.contains(dataGroupName)) {
-            config.set(String.format("%s."+ dataType, dataGroupName), DataString);
+        if (!config.contains(dataGroupName.toLowerCase())) {
+            config.set(String.format("%s."+ dataType.toLowerCase(), dataGroupName.toLowerCase()), DataString.toLowerCase());
         }
         save();
     }
 
     public String getData(String dataGroupName, String dataType){
-        String outPut = config.getString(String.format("%s."+dataType, dataGroupName));
+        String outPut = config.getString(String.format("%s."+dataType.toLowerCase(), dataGroupName.toLowerCase()));
         return outPut;
     }
 }

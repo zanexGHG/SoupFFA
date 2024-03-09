@@ -57,7 +57,4 @@ public class BuildCommand implements CommandExecutor {
         return playersInBuildMode;
     }
 
-    public static boolean isInBuildMOde(Player player){
-        return getPlayersInBuildMode().contains(player);
-    }
 }

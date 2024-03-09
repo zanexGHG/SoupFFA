@@ -1,7 +1,6 @@
 # MoritzMCC - Todo list #
 
 - Finish the ConfigManager
-- Finish BuildCommand and DisableEventsListener
 - Make a Kit system (with a selector)
 - Make an interface for the Kit system (for registoring kit item and kit event (onInteract for kangaroo for example))
 - Make a command to view a kits inventory (kitinfo)
