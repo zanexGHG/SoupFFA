@@ -1,4 +1,4 @@
-package dev.zanex.util;
+package dev.zanex.util.manager;
 
 import dev.zanex.soupffa.Main;
 import org.bukkit.entity.Player;

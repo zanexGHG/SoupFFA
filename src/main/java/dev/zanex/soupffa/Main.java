@@ -1,15 +1,11 @@
 package dev.zanex.soupffa;
 
-import dev.zanex.commands.BuildCommand;
-import dev.zanex.commands.FlyCommand;
-import dev.zanex.commands.GamemodeCommand;
-import dev.zanex.commands.SoupFFACommand;
+import dev.zanex.commands.*;
 import dev.zanex.listener.DisableEventListener;
 import dev.zanex.listener.JoinQuitListener;
 import dev.zanex.listener.SoupHealingListener;
-import dev.zanex.util.Config;
 import dev.zanex.util.CustomConfig;
-import dev.zanex.util.MySQLManager;
+import dev.zanex.util.manager.MySQLManager;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,8 +17,6 @@ public final class Main extends JavaPlugin {
     private static Connection connection;
     private final MySQLManager mySQLManager = new MySQLManager();
     private final PluginManager pluginManager = getServer().getPluginManager();
-    private CustomConfig customConfig = new CustomConfig();
-
 
     @Override
     public void onLoad() {
@@ -32,6 +26,17 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         /* -- Create configs -- */
+        CustomConfig config = new CustomConfig(this, "config.yml");
+        config.setTemplate("configs/config.yml");
+        config.save();
+
+        CustomConfig messageConfig = new CustomConfig(this, "messages.yml");
+        messageConfig.setTemplate("configs/messages.yml");
+        messageConfig.save();
+
+        CustomConfig mysqlConfig = new CustomConfig(this, "mysql.yml");
+        mysqlConfig.setTemplate("configs/mysql.yml");
+        mysqlConfig.save();
 
         /* -- Connect to MySQL database -- */
         connection = mySQLManager.connect("localhost", "3306", "SoupFFA", "admin", "admin");
@@ -43,36 +48,25 @@ public final class Main extends JavaPlugin {
             getLogger().severe("§cCould not connect to MySQL database");
         }
 
+        /* -- Set standart gamerules -- */
+        getServer().setDefaultGameMode(getServer().getDefaultGameMode());
+        // change "world" to config value
+        getServer().getWorld("world").setStorm(false);
+        getServer().getWorld("world").setThundering(false);
+        // change to time in config
+        getServer().getWorld("world").setTime(6000);
+
         /* -- Register commands -- */
         getCommand("soupffa").setExecutor(new SoupFFACommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("fly").setExecutor(new FlyCommand());
         getCommand("build").setExecutor(new BuildCommand());
+        getCommand("invsee").setExecutor(new InvseeCommand());
 
         /* -- Register listener -- */
         pluginManager.registerEvents(new JoinQuitListener(), this);
         pluginManager.registerEvents(new SoupHealingListener(), this);
         pluginManager.registerEvents(new DisableEventListener(), this);
-
-        /*-- Create configs --*/
-       Config test =  customConfig.build("test.json");
-       Config test1 = customConfig.build("test1.yml");
-       Config test2 = customConfig.build("test2");
-       Config test3 = customConfig.build("test3");
-
-        customConfig.addData( test1,"peter.pan.jo");
-        customConfig.addData( test1,"peter.faul.jo");
-
-        customConfig.addData( test2,"peter.faul.jo");
-        customConfig.removeDataGroup(test2 ,"peter");
-
-
-        customConfig.addData(test3, "pan.peter.jo");
-        customConfig.removeData(test3, "pan.peter");
-        customConfig.addData(test3, "pan.peter.no");
-
-
-
 
     }
 

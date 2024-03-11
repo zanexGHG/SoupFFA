@@ -1,6 +1,2 @@
-mysql:
-  host: localhost
-  port: 3306
-  user: soupffa
-  password: AT§GIrg3ofwkvc2k.2f8i7g
-  database: soupffa
+# Valid data types: mysql or file #
+save-data-type: mysql

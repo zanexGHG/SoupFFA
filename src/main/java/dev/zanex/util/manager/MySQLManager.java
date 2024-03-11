@@ -1,4 +1,4 @@
-package dev.zanex.util;
+package dev.zanex.util.manager;
 
 import org.bukkit.Bukkit;
 

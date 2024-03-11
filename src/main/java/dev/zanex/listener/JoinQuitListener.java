@@ -1,7 +1,7 @@
 package dev.zanex.listener;
 
 import dev.zanex.soupffa.Main;
-import dev.zanex.util.MySQLManager;
+import dev.zanex.util.manager.MySQLManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

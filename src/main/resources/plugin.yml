@@ -19,3 +19,7 @@ commands:
     description: Toggle your's or other player's fly mode.
     permission: soupffa.commands.fly
     aliases: [flight]
+  invsee:
+    description: Open the inventory of another player.
+    permission: soupffa.commands.invsee
+    aliases: [seeinv]
