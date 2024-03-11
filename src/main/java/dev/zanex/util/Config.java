@@ -105,7 +105,8 @@ public class Config {
             String dataGroupName = dataArray[0];
             String dataType = dataArray[1];
             String data = dataArray[2];
-            ((YamlConfiguration) configObject).set(String.format("%s."+ dataType.toLowerCase(), dataGroupName.toLowerCase()), data.toLowerCase());
+            ((YamlConfiguration) configObject).set(String.format("%s.%s", dataGroupName.toLowerCase(), dataType.toLowerCase()), data.toLowerCase());
+
         } else if (isJsonFile()) {
             String lowDataString = dataString.toLowerCase();
             String [] dataArray = lowDataString.split("\\.");

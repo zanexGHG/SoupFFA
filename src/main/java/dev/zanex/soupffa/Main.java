@@ -55,12 +55,22 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new DisableEventListener(), this);
 
         /*-- Create configs --*/
-        customConfig.build("test.json");
-        customConfig.build("test1.yml").add("pan.peter.faul");
-        customConfig.build("test2");
+       Config test =  customConfig.build("test.json");
+       Config test1 = customConfig.build("test1.yml");
+       Config test2 = customConfig.build("test2");
+       Config test3 = customConfig.build("test3");
 
-        customConfig.addData("test2.yml", "peter.pan.lehrer");
-        customConfig.removeData("test2.yml" ,"peter");
+        customConfig.addData( test1,"peter.pan.jo");
+        customConfig.addData( test1,"peter.faul.jo");
+
+        customConfig.addData( test2,"peter.faul.jo");
+        customConfig.removeDataGroup(test2 ,"peter");
+
+
+        customConfig.addData(test3, "pan.peter.jo");
+        customConfig.removeData(test3, "pan.peter");
+        customConfig.addData(test3, "pan.peter.no");
+
 
 
 

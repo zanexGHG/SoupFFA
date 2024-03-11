@@ -1,40 +1,36 @@
 package dev.zanex.util;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomConfig {
 
-   public CustomConfig(){
-
-
-   }
-
-    public Config build(String configName){
-       Config config = new Config(configName);
-       return config;
+    public CustomConfig() {
     }
 
-    public void addData(String configName, String dataString){
-
+    public Config build(String configName) {
         Config config = new Config(configName);
-       config.add(dataString);
+        configList.add(config);
+        return config;
     }
 
-    public void removeData(String configName, String key){
-       Config config = new Config(configName);
-       config.remove(key);
+    public void addData(Config config, String dataString) {
+        config.add(dataString);
     }
 
+    public void removeDataGroup(Config config, String key) {
+        config.remove(key);
+    }
+
+    public void removeData(Config config, String dataPath) {
 
 
-   public static List<String>confignameList = new ArrayList<>();
+        config.remove(dataPath);
+    }
 
+    public static List<Config> configList = new ArrayList<>();
 
-
-
-    public static List<String> getConfignameList() {
-        return confignameList;
+    public static List<Config> getConfigList() {
+        return configList;
     }
 }
