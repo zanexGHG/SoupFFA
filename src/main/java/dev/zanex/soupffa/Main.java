@@ -8,9 +8,8 @@ import dev.zanex.listener.DisableEventListener;
 import dev.zanex.listener.JoinQuitListener;
 import dev.zanex.listener.SoupHealingListener;
 import dev.zanex.util.Config;
-import dev.zanex.util.ConfigManager;
+import dev.zanex.util.CustomConfig;
 import dev.zanex.util.MySQLManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,6 +21,7 @@ public final class Main extends JavaPlugin {
     private static Connection connection;
     private final MySQLManager mySQLManager = new MySQLManager();
     private final PluginManager pluginManager = getServer().getPluginManager();
+    private CustomConfig customConfig = new CustomConfig();
 
 
     @Override
@@ -54,8 +54,15 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new SoupHealingListener(), this);
         pluginManager.registerEvents(new DisableEventListener(), this);
 
-        Config testConfig = ConfigManager.createConfig("TestConfig");
-        testConfig.add("test1", "playerName", "MoritzMCC");
+        /*-- Create configs --*/
+        customConfig.build("test.json");
+        customConfig.build("test1.yml").add("pan.peter.faul");
+        customConfig.build("test2");
+
+        customConfig.addData("test2.yml", "peter.pan.lehrer");
+        customConfig.removeData("test2.yml" ,"peter");
+
+
 
     }
 
