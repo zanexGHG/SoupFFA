@@ -37,3 +37,8 @@ CommandMessages:
         ADVENTURE: "The gamemode of {target} has been updated to &aADVENTURE&7."
         SPECTATOR: "The gamemode of {target} has been updated to &aSPECTATOR&7."
 
+ServerMessages:
+  MySQL:
+    ConnectionFailed: "§c§l! §7Failed to connect to the MySQL database! §fStacktrace: §b{error}"
+    ConnectionSuccess: "§a§l! §7Successfully connected to the MySQL database!"
+    DisconnectionSuccess: "§c§l! §7Successfully disconnected from the MySQL database!"

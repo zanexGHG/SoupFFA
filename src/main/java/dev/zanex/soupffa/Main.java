@@ -1,6 +1,7 @@
 package dev.zanex.soupffa;
 
 import dev.zanex.commands.*;
+import dev.zanex.commands.InvseeCommandListener;
 import dev.zanex.listener.DisableEventListener;
 import dev.zanex.listener.JoinQuitListener;
 import dev.zanex.listener.SoupHealingListener;
@@ -61,13 +62,13 @@ public final class Main extends JavaPlugin {
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("fly").setExecutor(new FlyCommand());
         getCommand("build").setExecutor(new BuildCommand());
-        getCommand("invsee").setExecutor(new InvseeCommand());
+        getCommand("invsee").setExecutor(new InvseeCommandListener());
 
         /* -- Register listener -- */
         pluginManager.registerEvents(new JoinQuitListener(), this);
         pluginManager.registerEvents(new SoupHealingListener(), this);
         pluginManager.registerEvents(new DisableEventListener(), this);
-
+        pluginManager.registerEvents(new InvseeCommandListener(), this);
     }
 
     @Override
