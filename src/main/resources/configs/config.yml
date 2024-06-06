@@ -1,2 +1,5 @@
 # Valid data types: mysql or file #
 save-data-type: mysql
+
+# -- Should other players be able to hit players in combat? -- #
+hit-while-in-combat: true;
