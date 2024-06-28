@@ -26,6 +26,8 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        DisableEventListener disableEventListener = new DisableEventListener();
+
         /* -- Create configs -- */
         CustomConfig config = new CustomConfig(this, "config.yml");
         config.setTemplate("configs/config.yml");
@@ -48,6 +50,9 @@ public final class Main extends JavaPlugin {
         } else {
             getLogger().severe("§cCould not connect to MySQL database");
         }
+
+        /* -- Start to disable events that have no event class. -- */
+        disableEventListener.onHunger();
 
         /* -- Set standart gamerules -- */
         getServer().setDefaultGameMode(getServer().getDefaultGameMode());

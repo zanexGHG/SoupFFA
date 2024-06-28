@@ -1,6 +1,8 @@
 package dev.zanex.listener;
 
 import dev.zanex.commands.BuildCommand;
+import dev.zanex.soupffa.Main;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -12,6 +14,7 @@ import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerAchievementAwardedEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class DisableEventListener implements Listener {
     @EventHandler
@@ -39,5 +42,18 @@ public class DisableEventListener implements Listener {
     @EventHandler
     public void onSpawn(EntitySpawnEvent event) {
         event.setCancelled(BuildCommand.getPlayersInBuildMode().isEmpty());
+    }
+
+    public void onHunger() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player player : Main.getInstance().getServer().getOnlinePlayers()) {
+                    if(player.getSaturation() < 20) {
+                        player.setSaturation(20);
+                    }
+                }
+            }
+        }.runTaskTimerAsynchronously(Main.getInstance(), 0, 20);
     }
 }
